@@ -2,6 +2,8 @@
 
 namespace Zendesk;
 
+require 'DocMethodMatcher.php';
+
 use Psy\Configuration;
 use Psy\Shell;
 use RuntimeException;
@@ -41,6 +43,7 @@ class LibagerCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $config = new Configuration;
+        $config->addTabCompletionMatchers([new DocMethodMatcher()]);
 
         $shell = new Shell($config);
 
@@ -50,7 +53,7 @@ class LibagerCommand extends Command
             'token' => $input->getArgument('password')
         ]);
 
-        $shell->setScopeVariables(['client' => $client]);
+        $shell->setScopeVariables(['ticket' => 'karl']);
         $shell->setBoundObject($client);
 
         $shell->run();
