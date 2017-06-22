@@ -14,6 +14,7 @@ use Zendesk\API\Traits\Resource\FindMany;
 use Zendesk\API\Traits\Resource\MultipartUpload;
 use Zendesk\API\Traits\Resource\UpdateMany;
 use Zendesk\API\Traits\Utility\InstantiatorTrait;
+use Zendesk\API\Traits\Resource\DeleteMany;
 
 /**
  * The Users class exposes user management methods
@@ -41,6 +42,7 @@ class Users extends ResourceAbstract
     }
     use UpdateMany;
     use CreateOrUpdateMany;
+    use DeleteMany;
 
     /**
      * @var UserIdentities
